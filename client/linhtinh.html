@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>chi tiet nguoi dung</h1>
+
+
+    <script>
+        let url = window.location.href;
+        url = new URL(url);
+        let id = url.searchParams.get('personal_id');
+        console.log(id);
+
+        //fetch(`http://localhost/Cv_online/api/resume/getResumeByPersonId.php?personal_id=${id}`).then(res => res.json)
+    </script>
+</body>
+
+</html>

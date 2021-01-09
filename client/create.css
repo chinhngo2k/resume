@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    background-color: #eceff1;
+    height: 100vh;
+    position: relative;
+    color: #000a12;
+}
+
+.wrapper {
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    height: 100%;
+    border-radius: 3rem;
+}
+
+.hide-scroll {
+    height: 100%;
+    overflow: scroll;
+}
+
+.header__content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.content__about--item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__content i {
+    margin-right: 5px;
+    color: #1565c0;
+}
+
+.about__item {
+    width: 32%;
+    margin: 20px 0;
+}
+
+.about__item>div {
+    margin: 20px 0;
+    align-items: center;
+}
+
+.about__item h4 {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.about__item input {
+    display: block;
+    width: 90%;
+    height: 30px;
+    outline: 0;
+    border: 1px solid #1565c0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.about__item .upload {
+    margin-top: 24px;
+}
+
+.about__item .upload input {
+    border: 0;
+}
+
+.about__item #sex {
+    width: 70px;
+    padding: 5px;
+    outline: 0;
+    border-radius: 5px;
+}
+
+.content__about--plan h4 {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.content__about--plan .about__plan--text {
+    display: block;
+    width: 100%;
+    height: 100px;
+    outline: 0;
+    border: 1px solid #1565c0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.header__content--about {
+    padding: 20px 0;
+}
+
+.header__content--education {
+    padding: 20px 0;
+}
+
+.content__education--item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.education__item>div {
+    margin: 20px 0;
+    align-items: center;
+}
+
+.education__item h4 {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.education__item {
+    width: 40%;
+    margin: 20px 0;
+}
+
+.education__item input {
+    display: block;
+    width: 90%;
+    height: 30px;
+    outline: 0;
+    border: 1px solid #1565c0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.education__item #level {
+    width: 70px;
+    padding: 5px;
+    outline: 0;
+    border-radius: 5px;
+}
+
+.header__content--skill {
+    padding: 20px 0;
+}
+
+.skill__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill__item .skill--text {
+    width: 40%;
+    margin-bottom: 15px;
+}
+
+.skill__item .skill {
+    width: 55%;
+    text-align: left;
+}
+
+.skill__item input {
+    display: block;
+    width: 90%;
+    height: 30px;
+    outline: 0;
+    border: 1px solid #1565c0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.skill__item h4 {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.content__skill--title {
+    margin: 20px 0;
+}
+
+.skill__item #skill {
+    width: 70px;
+    padding: 5px;
+    outline: 0;
+    border-radius: 5px;
+}
+
+.button--create {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.button--create button {
+    display: block;
+    background-color: #1565c0;
+    color: white;
+    border: 0;
+    padding: 5px 10px;
+    font-size: 17px;
+    border-radius: 6px;
+    outline: 0;
+}
+
+.button--create button i {
+    color: white;
+}
