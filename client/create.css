@@ -55,7 +55,7 @@ a {
     justify-content: space-between;
 }
 
-.header__content i {
+.header__content .content__about--title i {
     margin-right: 5px;
     color: #1565c0;
 }
@@ -211,16 +211,33 @@ a {
 }
 
 .button--create button {
-    display: block;
     background-color: #1565c0;
-    color: white;
-    border: 0;
-    padding: 5px 10px;
-    font-size: 17px;
-    border-radius: 6px;
+    border: none;
+    border-radius: 3px;
     outline: 0;
+    padding: 5px 10px;
 }
 
 .button--create button i {
+    font-size: 17px;
+    display: block;
     color: white;
+    text-align: center;
+}
+
+.button--submit {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.button--submit button {
+    background-color: #1565c0;
+    color: white;
+    border: 0;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 6px;
+    outline: 0;
 }
