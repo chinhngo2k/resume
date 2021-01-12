@@ -36,18 +36,22 @@ foreach ($countGroup as &$element) {
     array_push($result, $temp);
 }
 
-$index = 0;
-foreach ($result as $element) {
-    //trong truong hop nguoi dung ko nhap day du thong tin;
-    $company = isset($element["company$index"]) ? $element["company$index"] : '';
-    $job = isset($element["job$index"]) ? $element["job$index"] : '';
-    //$address = isset($element["address$index"]) ? $element["address$index"] : '';
-    $descripition = isset($element["descripition$index"]) ? $element["descripition$index"] : '';
-    $datestart = isset($element["datestart$index"]) ? $element["datestart$index"] : '';
-    $dateeend = isset($element["dataeend$index"]) ? $element["dataeend$index"] : '';
-    addExperienceByPersonalId($job, $company, $descripition, $datestart, $dateeend, intval($personal_id));
-    $index++;
+for($index = 0; $index < count($result); $index++){
+    var_dump($result[$index]);
 }
 
+// $index = 0;
+// foreach ($result as $element) {
+//     //trong truong hop nguoi dung ko nhap day du thong tin;
+//     $company = isset($element["company$index"]) ? $element["company$index"] : '';
+//     $job = isset($element["job$index"]) ? $element["job$index"] : '';
+//     //$address = isset($element["address$index"]) ? $element["address$index"] : '';
+//     $descripition = isset($element["descripition$index"]) ? $element["descripition$index"] : '';
+//     $datestart = isset($element["datestart$index"]) ? $element["datestart$index"] : '';
+//     $dateeend = isset($element["dataeend$index"]) ? $element["dataeend$index"] : '';
+//     addExperienceByPersonalId($job, $company, $descripition, $datestart, $dateeend, intval($personal_id));
+//     $index++;
+// }
+
 //chi viec them tung phan tu trong result nay vao co so du lieu la xong
-var_dump($result);
+//var_dump($result);
