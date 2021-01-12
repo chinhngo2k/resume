@@ -5,14 +5,14 @@
 function getExperienceByPersonalId($personal_id)
 {
     global $db;
-    $education = $db->query("select * from education where personal_id = '$personal_id'");
-    $education = $education->fetchAll(PDO::FETCH_ASSOC);
-    return $education;
+    $experience = $db->query("select * from experience where personal_id = '$personal_id'");
+    $experience = $experience->fetchAll(PDO::FETCH_ASSOC);
+    return $experience;
 }
 
-function addExperience($school, $degree, $address, $descripition, $datestart, $dateend, $personal_id)
+function addExperienceByPersonalId($job, $company, $descripition, $datestart, $dateend, $personal_id)
 {
     global $db;
-    $query = "insert education(school, degree, address, descripition, datestart, dateend, personal_id) values('$school', '$degree', '$address', '$descripition', '$datestart', '$dateend', $personal_id)";
+    $query = "insert experience(job, company, descripition, datestart, dateend, personal_id) values('$job', '$company', '$descripition', '$datestart', '$dateend', $personal_id)";
     $db->exec($query);
 }

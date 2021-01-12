@@ -25,7 +25,7 @@ function addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, 
     $code = md5(uniqid(rand(), true));
     $query = "insert personal(fullname, birthday, sex, mail, address, phone, job, facebook_link, github_link, carrer, code) values('$fullname', '$birthday', $sex, '$mail', '$address', $phone, '$job', '$facebook_link', '$github_link', '$carrer', '$code')";
     $count = $db->exec($query);
-    if($count > 0){
+    if ($count > 0) {
         //thuc hien thanh cong;
         $user = $db->query("select personal_id from personal where code = '$code'");
         $user = $user->fetch(PDO::FETCH_ASSOC);
@@ -33,8 +33,13 @@ function addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, 
     }
 }
 
+function updateAvatar($avatar, $personal_id)
+{
+    global $db;
+    $query = "update personal set avatar = '$avatar' where personal_id = $personal_id";
+    $db->exec($query);
+}
 
 //sua
 
 //xoa
-
