@@ -18,12 +18,21 @@ function getPersonalById($personal_id)
     return $personal;
 }
 
+function getPersonalByAccId($acc_id){
+    global $db;
+    $personal = $db->query("select * from personal where acc_id = $acc_id");
+    $personal =  $personal->fetchAll(PDO::FETCH_ASSOC);
+    return $personal;
+}
+
 //them
-function addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, $facebook_link, $github_link, $carrer)
+function addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, $facebook_link, $carrer, $acc_id)
 {
     global $db;
     $code = md5(uniqid(rand(), true));
-    $query = "insert personal(fullname, birthday, sex, mail, address, phone, job, facebook_link, github_link, carrer, code) values('$fullname', '$birthday', $sex, '$mail', '$address', $phone, '$job', '$facebook_link', '$github_link', '$carrer', '$code')";
+    //echo $birthday;
+    $query = "insert personal(fullname, birthday, sex, mail, address, phone, job, facebook_link, carrer, code, acc_id) values('$fullname', '$birthday', $sex, '$mail', '$address', $phone, '$job', '$facebook_link', '$carrer', '$code', $acc_id)";
+    //echo $query;
     $count = $db->exec($query);
     if ($count > 0) {
         //thuc hien thanh cong;

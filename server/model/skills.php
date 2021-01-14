@@ -4,7 +4,7 @@
 
 function getSkillsByPerosnalId($personal_id){
     global $db;
-    $query = "select * from skills where personal_id = $personal_id";
+    $query = "select skill, level from skills where personal_id = $personal_id";
     try{
         $skills = $db->query($query);
         $skills = $skills->fetchAll(PDO::FETCH_ASSOC);

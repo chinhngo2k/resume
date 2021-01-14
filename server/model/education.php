@@ -5,7 +5,7 @@
 function getEducationByPersonalId($personal_id)
 {
     global $db;
-    $education = $db->query("select * from education where personal_id = '$personal_id'");
+    $education = $db->query("select school, degree, datestart, dateend, descripition from education where personal_id = '$personal_id'");
     $education = $education->fetchAll(PDO::FETCH_ASSOC);
     return $education;
 }
