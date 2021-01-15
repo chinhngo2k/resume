@@ -16,3 +16,4 @@ function addExperienceByPersonalId($job, $company, $descripition, $datestart, $d
     $query = "insert experience(job, company, descripition, datestart, dateend, personal_id) values('$job', '$company', '$descripition', '$datestart', '$dateend', $personal_id)";
     $db->exec($query);
 }
+

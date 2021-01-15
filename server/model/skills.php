@@ -27,3 +27,4 @@ function addSkillByPersonalId($skill, $level, $personal_id){
         return ['error' => 'them moi ky nang ko thanh cong'];
     }
 }
+
