@@ -17,8 +17,6 @@ function addExperienceByPersonalId($job, $company, $descripition, $datestart, $d
     $db->exec($query);
 }
 
-<<<<<<< HEAD
-=======
 function deleteExperience($per_id)
 {
     global $db;
@@ -29,4 +27,3 @@ function deleteExperience($per_id)
         echo $e;
     }
 }
->>>>>>> 5ac017fb8ff8491af16033e94a32d64ce02615cf

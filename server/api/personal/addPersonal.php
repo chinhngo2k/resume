@@ -28,7 +28,7 @@ $facebook_link = $person['facebook_link'];
 //$github_link = $person['github_link'];
 $carrer = $person['carrer'];
 
-
+echo $fullname;
 $personla_id = addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, $facebook_link, $carrer, $acc_id);
 
 echo json_encode($personla_id);

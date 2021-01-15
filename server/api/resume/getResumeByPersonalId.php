@@ -20,9 +20,9 @@ if (isset($_GET['personal_id'])) {
 
     //lay thong tin ve hoc van
     $education = getEducationByPersonalId($personal_id);
-
+    //lay thong tin knlv
     $experience = getExperienceByPersonalId($personal_id);
-
+    //ki nang
     $skills = getSkillsByPerosnalId($personal_id);
 
 
@@ -32,7 +32,7 @@ if (isset($_GET['personal_id'])) {
     //cai education dang la 1 mang thi phai duyet qua tung phan tu de chinh sua
     foreach ($education as &$item) {
         //item chinh la giai doan hoc 
-        $datestart = explode('-', $item['datestart']);
+        $datestart = explode('-', $item['datestart']); //datestart la mang gap explode no se tach chuoi khi gap -
         $item['datestart'] = "tháng $datestart[1], $datestart[0]";
 
         $dateend = explode('-', $item['dateend']);
