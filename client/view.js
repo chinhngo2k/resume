@@ -73,7 +73,7 @@ const updateEducation = (education) => {
 //experience la mang chua cac gd lam viec
 
 const updateExperience = (experience) => {
-    const listExperience = document.querySelector(".experience.timeline__list");
+    const listExperience = document.querySelector(".experience .timeline__list");
     console.log("sadjhagh");
     experience.forEach((element) => {
         const { company, job, address, descripition, datestart, dateend } = element;
@@ -101,8 +101,36 @@ const updateExperience = (experience) => {
         listExperience.innerHTML += item;
     });
 };
+
+const updateSkills = (skills) => {
+    const listSkills = document.querySelector(".skill-list");
+    skills.forEach(element => {
+        let item = `<div class="skill-item">
+        <p class="skill-title">${element.skill}</p>
+        <div class="skill-level">
+            <ul class="${element.skill}">
+                <li class=""></li>
+                <li class=""></li>
+                <li class=""></li>
+                <li class=""></li>
+                <li class=""></li>
+            </ul>
+        </div>
+    </div>`;
+    listSkills.innerHTML += item;
+    const listNode = document.querySelectorAll(`.skill-item .${element.skill} li`);
+    for(let i = 0; i < element.level; i++){
+        listNode[i].className += ' active';
+    }
+
+    
+    });
+    
+}
+
+//viet lai cho nay nhuwng de chinh commit
 fetch(
-        `http://localhost/Cv_online/api/resume/getResumeByPersonId.php?personal_id=${id}`
+        `http://localhost/resume/server/api/resume/getResumeByPersonalId.php?personal_id=${id}`
     )
     .then((res) => res.json())
     .then((data) => {
@@ -110,4 +138,5 @@ fetch(
         updatePersonalInfo(data);
         updateEducation(data.education);
         updateExperience(data.experience);
+        updateSkills(data.skills);
     });

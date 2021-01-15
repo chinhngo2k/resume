@@ -1,3 +1,14 @@
+//kiem tra nguoi dung da dang nhap thi moi duoc ato cv
+const id = sessionStorage.getItem('id');
+console.log(id);
+// if(!id){
+//     window.location.href = "http://localhost/resume/client/login.html";
+// }
+// else{
+//     console.log('dang nhap thanh cong');
+// }
+
+
 ///xu ly du lieu cho phan them ky nang
 const btnAddSkill = document.querySelector(".btn-add-skill");
 let listSkill = document.querySelector(".list-skill");
@@ -83,22 +94,24 @@ const setValueDefaultSkill = (arrayKey, arrayValue) => {
 
 btnAddSkill.onclick = () => {
   let skillItem = `<div class="skill-item" id="skills${amountSkill}">
-    <div class="skill">
-        <label for="skill${amountSkill}">ten ky nang</label>
-        <input type="text" name="skill${amountSkill}" id="skill${amountSkill}" value='' class="skill-value" >
+    <div class="r-flex">
+    <div class="skill w-1-2">
+    <label for="skill${amountSkill}" class="form-label">ký năng</label>
+    <input type="text" name="skill${amountSkill}" id="skill${amountSkill}" value='' class="skill-value form-input" >
+</div>
+<div class="level w-1-2">
+    <label for="level${amountSkill}" class="form-label">đánh giá</label>
+    <select name="level${amountSkill}" id="level${amountSkill}" class="level-value form-input">
+        <option value="" selected>--Please choose an option--</option>
+        <option id="" value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+</div>
     </div>
-    <div class="level">
-        <label for="level${amountSkill}">Danh gia</label>
-        <select name="level${amountSkill}" id="level${amountSkill}" class="level-value">
-            <option value="" selected>--Please choose an option--</option>
-            <option id="" value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-    </div>
-    <button type="button" id="skills${amountSkill}" >xoa</button>
+    <button type="button" id="skills${amountSkill}" class="btn" >xoá</button>
     
 </div>`;
 
@@ -182,34 +195,34 @@ const btnAddEducation = document.querySelector(".btn-add-education");
 const listEducation = document.querySelector(".list-education");
 
 const addEducationIntoListEducation = () => {
-  let education = `<div class="education-item" id="education${amountEducation}">
-    <div class="school-degree">
-        <div class="school">
-            <label for="">Truong hoc</label>
-            <input type="text" name="school${amountEducation}" class="school-value" id="school${amountEducation}">
-        </div>
-        <div>
-            <label for="">Cap hoc</label>
-            <input type="text" name="degree${amountEducation}" class="degree-value" id="degree${amountEducation}" >
-        </div>
-        
-    </div>
-    <div class="date">
-        <div class="datestart">
-            <label for="">Ngay theo hoc</label>
-            <input type="date" name="datestart${amountEducation}" class="datestart-value" id="datestart${amountEducation}" >
-        </div>
-        <div class="dateend">
-            <label for="">Ngay ket thuc</label>
-            <input type="date" name="dateend${amountEducation}" class="dateend-value" id="dateend${amountEducation}" >
-        </div>
-    </div>
-    <div class="descripition">
-        <label for="">Mo ta</label>
-        <textarea name="descripition${amountEducation}" class="descripition-value" id="descripition${amountEducation}" cols="30" rows="10"></textarea>
-    </div>
-    <button type="button" id="education${amountEducation}">Xoa</button>
-</div>`;
+  let education = `<div class="education-item my-2" id="education${amountEducation}">
+      <div class="school-degree r-flex">
+          <div class="school w-1-2">
+              <label for="" class="form-label">trường học</label>
+              <input type="text" name="school${amountEducation}" class="school-value form-input" id="school${amountEducation}">
+          </div>
+          <div class="w-1-2">
+              <label for="" class="form-label">cấp học</label>
+              <input type="text" name="degree${amountEducation}" class="degree-value form-input" id="degree${amountEducation}" >
+          </div>
+          
+      </div>
+      <div class="date r-flex">
+          <div class="datestart w-1-2">
+              <label for="" class="form-label">ngày bắt đầu học</label>
+              <input type="date" name="datestart${amountEducation}" class="datestart-value form-input" id="datestart${amountEducation}" >
+          </div>
+          <div class="dateend w-1-2">
+              <label for="" class="form-label">ngày kết thúc</label>
+              <input type="date" name="dateend${amountEducation}" class="dateend-value form-input" id="dateend${amountEducation}" >
+          </div>
+      </div>
+      <div class="descripition w-1-2">
+          <label for="" class="form-label">mô tả</label>
+          <textarea name="descripition${amountEducation}" class="descripition-value form-input" id="descripition${amountEducation}" cols="30" rows="10"></textarea>
+      </div>
+      <button type="button" id="education${amountEducation}" class="btn">xoá</button>
+  </div>`;
 
   listEducation.innerHTML += education;
   amountEducation++;
@@ -285,7 +298,7 @@ const updateEducation = () => {
   descripitionValue.forEach((element) => {
     //element: #school1
     let temp = descripition.filter((e) => e.key === element.getAttribute("id"));
-    element.setAttribute("value", temp.length > 0 ? temp[0]?.value : "");
+    element.value = temp.length > 0 ? temp[0]?.value : "";
     //cai educationResult: {[value: , key: school1, group:, ], [], ...}
   });
 };
@@ -350,67 +363,65 @@ btnAddEducation.onclick = () => {
   updateEducation();
 };
 
-
 //xu ly phan thong tin ca nhan
 
 let person = {
-  fullname: '',
-  birthday: '',
+  fullname: "",
+  birthday: "",
   sex: 0,
-  mail: '',
-  address: '',
+  mail: "",
+  address: "",
   phone: 0,
-  job: '',
-  facebook_link: '',
-  github_link: '',
-  carrer: '',
+  job: "",
+  facebook_link: "",
+  github_link: "",
+  carrer: "",
   avatar: null,
-}
+};
 
 //truy xuat den phan tu html
-const fullname = document.querySelector('.fullname input');
-const birthday = document.querySelector('.birthday input');
-const sex = document.querySelector('.sex select');
-const mail = document.querySelector('.mail input');
-const address = document.querySelector('.address input');
-const phone = document.querySelector('.phone input');
-const job = document.querySelector('.job input');
-const facebooklink = document.querySelector('.facebook-link input');
-const githublink = document.querySelector('.github-link input');
-const carrer = document.querySelector('.carrer textarea');
+const fullname = document.querySelector(".fullname input");
+const birthday = document.querySelector(".birthday input");
+const sex = document.querySelector(".sex select");
+const mail = document.querySelector(".mail input");
+const address = document.querySelector(".address input");
+const phone = document.querySelector(".phone input");
+const job = document.querySelector(".job input");
+const facebooklink = document.querySelector(".facebook-link input");
+const githublink = document.querySelector(".github-link input");
+const carrer = document.querySelector(".carrer textarea");
 
 fullname.onchange = (e) => {
-  person = {...person, fullname: e.target.value};
-} 
+  person = { ...person, fullname: e.target.value };
+};
 birthday.onchange = (e) => {
-  person = {...person, birthday: e.target.value};
-}
+  person = { ...person, birthday: e.target.value };
+};
 sex.onchange = (e) => {
-  person = {...person, sex: e.target.value};
+  person = { ...person, sex: e.target.value };
   console.log(person);
-}
+};
 mail.onchange = (e) => {
-  person = {...person, mail: e.target.value};
-}
+  person = { ...person, mail: e.target.value };
+};
 address.onchange = (e) => {
-  person = {...person, adddress: e.target.value};
-}
+  person = { ...person, address: e.target.value };
+};
 phone.onchange = (e) => {
-  person = {...person, phone: e.target.value};
-}
+  person = { ...person, phone: e.target.value };
+};
 facebooklink.onchange = (e) => {
-  person = {...person, facebook_link: e.target.value};
-}
+  person = { ...person, facebook_link: e.target.value };
+};
 githublink.onchange = (e) => {
-  person = {...person, github_link: e.target.value};
-}
+  person = { ...person, github_link: e.target.value };
+};
 job.onchange = (e) => {
-  person = {...person, job: e.target.value};
-}
+  person = { ...person, job: e.target.value };
+};
 carrer.onchange = (e) => {
-  person = {...person, carrer: e.target.value};
-}
-
+  person = { ...person, carrer: e.target.value };
+};
 
 //phan kinh nghiem
 let amountExperience = 0;
@@ -428,33 +439,33 @@ const btnAddExperience = document.querySelector(".btn-add-experience");
 const listExperience = document.querySelector(".list-experience");
 
 const addExperienceIntoListExperience = () => {
-  let experience = `<div class="experience-item" id="experience${amountExperience}">
-    <div class="job-company">
-        <div class="job">
-            <label for="job">Chuc vu</label>
-            <input type="text" name="job${amountExperience}" class="job-value" id="job${amountExperience}">
+  let experience = `<div class="experience-item my-2" id="experience${amountExperience}">
+    <div class="job-company r-flex">
+        <div class="job w-1-2">
+            <label for="job" class="form-label">chức vụ</label>
+            <input type="text" name="job${amountExperience}" class="job-value form-input" id="job${amountExperience}">
         </div>
-        <div>
-            <label for="company">Cong ty</label>
-            <input type="text" name="company${amountExperience}" class="company-value" id="company${amountExperience}" >
+        <div class="w-1-2">
+            <label for="company" class="form-label">công ty</label>
+            <input type="text" name="company${amountExperience}" class="company-value form-input" id="company${amountExperience}" >
         </div>
         
     </div>
-    <div class="date">
-        <div class="datestart">
-            <label for="">Ngay theo hoc</label>
-            <input type="date" name="datestart${amountExperience}" class="exp_datestart-value" id="exp_datestart${amountExperience}" >
+    <div class="date r-flex">
+        <div class="datestart w-1-2">
+            <label for="" class="form-label">ngày bắt đầu</label>
+            <input type="date" name="datestart${amountExperience}" class="exp_datestart-value form-input" id="exp_datestart${amountExperience}" >
         </div>
-        <div class="dateend">
-            <label for="">Ngay ket thuc</label>
-            <input type="date" name="dateend${amountExperience}" class="exp_dateend-value" id="exp_dateend${amountExperience}" >
+        <div class="dateend w-1-2">
+            <label for="" class="form-label">ngày kết thúc</label>
+            <input type="date" name="dateend${amountExperience}" class="exp_dateend-value form-input" id="exp_dateend${amountExperience}" >
         </div>
     </div>
-    <div class="descripition">
-        <label for="">Mo ta</label>
-        <textarea name="descripition${amountExperience}" class="exp_descripition-value" id="exp_descripition${amountExperience}" cols="30" rows="10"></textarea>
+    <div class="descripition w-1-2">
+        <label for="" class="form-label">mô tả</label>
+        <textarea name="descripition${amountExperience}" class="exp_descripition-value form-input" id="exp_descripition${amountExperience}" cols="30" rows="10"></textarea>
     </div>
-    <button type="button" id="experience${amountExperience}">Xoa</button>
+    <button type="button" id="experience${amountExperience}" class="btn" >xoá</button>
 </div>`;
 
   listExperience.innerHTML += experience;
@@ -469,7 +480,7 @@ const formatExperience = (experience) => {
         experienceResult.job = [...experienceResult.job, element];
     } else if (group === "company") {
       if (!experienceResult.company.map((e) => e.key).includes(key))
-        experienceResult.degree = [...experienceResult.company, element];
+        experienceResult.company = [...experienceResult.company, element];
     } else if (group === "datestart") {
       if (!experienceResult.datestart.map((e) => e.key).includes(key))
         experienceResult.datestart = [...experienceResult.datestart, element];
@@ -497,7 +508,9 @@ const updateExperience = () => {
   const jobValue = document.querySelectorAll(".job-value");
   const datestartValue = document.querySelectorAll(".exp_datestart-value");
   const dateendValue = document.querySelectorAll(".exp_dateend-value");
-  const descripitionValue = document.querySelectorAll(".exp_descripition-value");
+  const descripitionValue = document.querySelectorAll(
+    ".exp_descripition-value"
+  );
 
   //console.log(school);
   companyValue.forEach((element) => {
@@ -516,22 +529,30 @@ const updateExperience = () => {
 
   datestartValue.forEach((element) => {
     //element: #school1
-    let temp = datestart.filter((e) => e.key === element.getAttribute("id"));
+    let temp = datestart.filter(
+      (e) => e.key === element.getAttribute("id").slice(4)
+    );
     element.setAttribute("value", temp.length > 0 ? temp[0]?.value : "");
     //cai educationResult: {[value: , key: school1, group:, ], [], ...}
   });
 
   dateendValue.forEach((element) => {
     //element: #school1
-    let temp = dateend.filter((e) => e.key === element.getAttribute("id"));
+    let temp = dateend.filter(
+      (e) => e.key === element.getAttribute("id").slice(4)
+    );
     element.setAttribute("value", temp.length > 0 ? temp[0]?.value : "");
     //cai educationResult: {[value: , key: school1, group:, ], [], ...}
   });
 
   descripitionValue.forEach((element) => {
     //element: #school1
-    let temp = descripition.filter((e) => e.key === element.getAttribute("id"));
-    element.setAttribute("value", temp.length > 0 ? temp[0]?.value : "");
+    let temp = descripition.filter(
+      (e) => e.key === element.getAttribute("id").slice(4)
+    );
+    console.log(temp);
+    //element.setAttribute("value", temp.length > 0 ? temp[0]?.value : "");
+    element.value = temp.length > 0 ? temp[0]?.value : "";
     //cai educationResult: {[value: , key: school1, group:, ], [], ...}
   });
 };
@@ -597,51 +618,61 @@ btnAddExperience.onclick = () => {
   updateExperience();
 };
 
-  const avatarInput = document.querySelector('.avatar input');
+const avatarInput = document.querySelector(".avatar input");
 avatarInput.onchange = (e) => {
-  person = {...person, avatar: e.target.files[0]};
-}
+  person = { ...person, avatar: e.target.files[0] };
+};
 
 //phan gui du lieu len serevr
 const btnSubmit = document.querySelector(".btn-submit button");
 btnSubmit.onclick = async () => {
+  console.log('jhagsdhja');
   //luu thong tin hoc van cac kieu trc
   let data = { skills, education, person, experience };
-  //console.log(data.skills)
+  console.log(data.person);
+  // //console.log(data.skills)
   const resPersonal = await fetch(
     "http://localhost/resume/server/api/personal/addPersonal.php",
     {
       method: "POST",
-      body: JSON.stringify(data.person),
+      body: JSON.stringify({person: data.person, acc_id: id}),
     }
   );
   const personal_id = await resPersonal.json();
   //console.log(typeof Number(personal_id));
 
   let formData = new FormData();
-  formData.append('avatar', person.avatar);
-  formData.append('personal_id', personal_id);
-  await fetch("http://localhost/resume/server/api/personal/uploadAvatarByPersonalId.php", {
-    method: "post",
-    body: formData,
-  });
+  formData.append("avatar", person.avatar);
+  formData.append("personal_id", personal_id);
+  await fetch(
+    "http://localhost/resume/server/api/personal/uploadAvatarByPersonalId.php",
+    {
+      method: "post",
+      body: formData,
+    }
+  );
 
-  await fetch("http://localhost/resume/server/api/education/addEducationByPersonalId.php", {
-    method: "post",
-    body: JSON.stringify({education: data.education, personal_id})
-  });
+  await fetch(
+    "http://localhost/resume/server/api/education/addEducationByPersonalId.php",
+    {
+      method: "post",
+      body: JSON.stringify({ education: data.education, personal_id }),
+    }
+  );
 
-  await fetch("http://localhost/resume/server/api/experience/addExperienceByPersonalId.php", {
-    method: "post",
-    body: JSON.stringify({experience: data.experience, personal_id})
-  });
+  await fetch(
+    "http://localhost/resume/server/api/experience/addExperienceByPersonalId.php",
+    {
+      method: "post",
+      body: JSON.stringify({ experience: data.experience, personal_id }),
+    }
+  );
 
-  await fetch("http://localhost/resume/server/api/skills/addSkillByPersonalId.php", {
-    method: "post",
-    body: JSON.stringify({skills: data.skills, personal_id}),
-  })
-
-  //const temp = await resEducation.text();
-  //console.log(temp);
-  //upload anh len sau
+  await fetch(
+    "http://localhost/resume/server/api/skills/addSkillByPersonalId.php",
+    {
+      method: "post",
+      body: JSON.stringify({ skills: data.skills, personal_id }),
+    }
+  );
 };

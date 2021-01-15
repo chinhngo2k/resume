@@ -70,7 +70,7 @@ a {
     align-items: center;
 }
 
-.about__item h4 {
+.about__item label {
     display: block;
     margin-bottom: 5px;
 }

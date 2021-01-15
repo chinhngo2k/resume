@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div class="experience">
+        <h1>kinh nghiem lam viec</h1>
+        <div class="list-experience">
+          <!-- form nhap thong tin se duoc do vao day khi nguoi dung nhap "them thong tin" -->
+        </div>
+        <div class="btn-add-experience">
+          <button>Them thong tin</button>
+        </div>
+      </div>
+
+      <div class="education pd">
+        <h1 class="heading">trình độ học vấn</h1>
+        <div class="list-education">
+          <!-- form nhap thong tin se duoc do vao day khi nguoi dung nhap "them thong tin" -->
+        </div>
+        <div class="btn-add-education">
+          <button class="btn-add">thêm thông tin</button>
+        </div>
+      </div>
+
+      <div class="skills pd">
+        <h1 class="heading">kỹ năng</h1>
+        <div class="list-skill"></div>
+        <div class="btn-add-skill">
+          <button class="btn-add">thêm thông tin</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let amountExperience = 0;
+      let experience = [];
+      let experienceResult = {
+        job: [],
+        company: [],
+        datestart: [],
+        dateend: [],
+        descripition: [],
+      };
+
+      let amountEducation = 0;
+      let education = [];
+      let educationResult = {
+        school: [],
+        degree: [],
+        major: [],
+        datestart: [],
+        dateend: [],
+        descripition: [],
+      };
+
+      const listEducation = document.querySelector(".list-education");
+      const btnAddEducation = document.querySelector(
+        ".btn-add-education button"
+      );
+
+      const btnAddExperience = document.querySelector(".btn-add-experience");
+      //console.log(btnAddExperience);
+      const listExperience = document.querySelector(".list-experience");
+
+      const addExperienceIntoListExperience = () => {
+        let experience = `<div class="experience-item" id="experience${amountExperience}">
+    <div class="job-company">
+        <div class="job">
+            <label for="job">Chuc vu</label>
+            <input type="text" name="job${amountExperience}" class="exp_job-value" id="exp_job${amountExperience}">
+        </div>
+        <div>
+            <label for="company">Cong ty</label>
+            <input type="text" name="company${amountExperience}" class="exp_company-value" id="exp_company${amountExperience}" >
+        </div>
+        
+    </div>
+    <div class="date">
+        <div class="datestart">
+            <label for="">Ngay theo hoc</label>
+            <input type="date" name="datestart${amountExperience}" class="exp_datestart-value" id="exp_datestart${amountExperience}" >
+        </div>
+        <div class="dateend">
+            <label for="">Ngay ket thuc</label>
+            <input type="date" name="dateend${amountExperience}" class="exp_dateend-value" id="exp_dateend${amountExperience}" >
+        </div>
+    </div>
+    <div class="descripition">
+        <label for="">Mo ta</label>
+        <textarea name="descripition${amountExperience}" class="exp_descripition-value" id="exp_descripition${amountExperience}" cols="30" rows="10"></textarea>
+    </div>
+    <button type="button" id="experience${amountExperience}">Xoa</button>
+</div>`;
+
+        listExperience.innerHTML += experience;
+        amountExperience++;
+      };
+
+      const addEducationIntoListEducation = () => {
+        let education = `<div class="education-item my-2" id="education${amountEducation}">
+      <div class="school-degree r-flex">
+          <div class="school w-1-3">
+              <label for="" class="form-label">trường học</label>
+              <input type="text" name="school${amountEducation}" class="edu_school-value form-input" id="edu_school${amountEducation}">
+          </div>
+          <div class="w-1-3">
+              <label for="" class="form-label">cấp học</label>
+              <input type="text" name="degree${amountEducation}" class="edu_degree-value form-input" id="edu_degree${amountEducation}" >
+          </div>
+          <div class="w-1-3">
+              <label for="" class="form-label">chuyên ngành</label>
+              <input type="text" name="major${amountEducation}" class="edu_major-value form-input" id="edu_major${amountEducation}" >
+          </div>
+          
+      </div>
+      <div class="date r-flex">
+          <div class="datestart w-1-2">
+              <label for="" class="form-label">ngày bắt đầu học</label>
+              <input type="date" name="datestart${amountEducation}" class="edu_datestart-value form-input" id="edu_datestart${amountEducation}" >
+          </div>
+          <div class="dateend w-1-2">
+              <label for="" class="form-label">ngày kết thúc</label>
+              <input type="date" name="dateend${amountEducation}" class="edu_dateend-value form-input" id="edu_dateend${amountEducation}" >
+          </div>
+      </div>
+      <div class="descripition w-1-2">
+          <label for="" class="form-label">mô tả</label>
+          <textarea name="descripition${amountEducation}" class="edu_descripition-value form-input" id="edu_descripition${amountEducation}" cols="30" rows="10"></textarea>
+      </div>
+      <button type="button" id="education${amountEducation}" class="btn">xoá</button>
+  </div>`;
+
+        listEducation.innerHTML += education;
+        amountEducation++;
+      };
+
+      //param: <cai muon format: education, experience, skills>, <nhung thuoc tinh trong cai muon format: job, company, ...>
+      const format = (array, pro, arrAfter) => {
+        //console.log(array);
+        array.forEach((element) => {
+          const { group, key } = element;
+          pro.forEach((value) => {
+            if (group === value) {
+              if (!arrAfter[`${value}`].map((e) => e.key).includes(key)) {
+                arrAfter[`${value}`] = [...arrAfter[`${value}`], element];
+              }
+            }
+          });
+        });
+      };
+
+      //param: <ket qua>: object, <cai thuoc tinh trong mang ket qua>: array, <cac class de truy xuat den cac the html>: array
+      // update(experienceResult, [company, job, datestart, dateend, descripition], ['.exp_company-value', ...])
+      const update = (objectResult, arrClass, length) => {
+        //temp chua cac nodeofelement, cac phan tu html truy xuat duoc theo class trong mang arrClass
+        let nodeListElement = [];
+        arrClass.forEach((className) => {
+          const nodeElement = document.querySelectorAll(`.${className}`);
+          nodeListElement = [...nodeListElement, nodeElement];
+        });
+
+        nodeListElement.forEach((nodeElement) => {
+          nodeElement.forEach((element) => {
+            const prop = element.name.slice(0, element.name.length - 1);
+            let temp = objectResult[`${prop}`].filter(
+              (e) => e.key === element.id.slice(length)
+            )[0];
+            element.value = temp ? temp.value : "";
+          });
+        });
+      };
+      //update(experienceResult, ['company', 'job', 'datestart', 'dateend', 'descripition'], ['exp_company-value', 'exp_job-value', 'exp_datestart-value', 'exp_dateend-value', 'exp_descripition-value']);
+
+
+      listExperience.onclick = (event) => {
+        //lay ra cai o input dang duoc click
+        itemExperience = event.target;
+
+        //bat su kien khi nguoi dung thay doi du lieu trong input
+        itemExperience.onchange = (event) => {
+          console.log("change");
+          const value = event.target.value;
+          const key = event.target.name;
+
+          let info = {};
+          info.value = value;
+          info.key = key;
+          info.group = key.slice(0, key.length - 1);
+          /* info no se co du lieu kieu nay ne: 
+        {value: "dai hoc thuy loi", key: "school0", group: "school"}
+        */
+
+          //kiem tra
+          if (experience.map((e) => e.key).includes(info.key)) {
+            //tra ve phan tu co key trung voi cai vua nhap vao
+            experience = experience.filter((e) => e.key !== info.key);
+            experience = [...experience, info];
+          } else experience = [...experience, info];
+        };
+
+        //khi nguoi dung thoat ra khoi vung nhap thi phai format lai du lieu luon
+        itemExperience.onblur = () => {
+          format(
+            experience,
+            ["job", "company", "datestart", "dateend", "descripition"],
+            experienceResult
+          );
+        };
+        // Task 4: Khi nguoi dung nhan vao nut xoa thi xoa form nhap di
+
+        //itemEducation day dang la cai button
+        itemExperience.onclick = () => {
+          if (itemExperience.getAttribute("type") === "button") {
+            //kiem tra xem no co phai la button ko cho chac
+            let id = `${itemExperience.getAttribute("id")}`;
+            let experienceRemove = document.querySelector(`#${id}`);
+            //console.log(experienceRemove)
+            //console.log(id, experienceRemoce);
+            experienceRemove.remove();
+
+            // xoa du lieu trong cai education di
+            //id = education1 => xoa tat ca key : [school1, degree1, datestart1, ...]
+            //[{value: "", key: "school1", group: "school"}, {value: "", key: "", group: "school"}, {value: "", key: "", group: "degree"}, {value: "", key: "", group: "school"}]
+            experience = experience.filter(
+              (e) => !e.key.includes(id.slice(id.length - 1))
+            );
+
+            // format lai cai educationResult
+            format(
+              experience,
+              ["job", "company", "datestart", "dateend", "descripition"],
+              experienceResult
+            );
+          }
+        };
+      };
+
+      btnAddExperience.onclick = () => {
+        addExperienceIntoListExperience();
+        update(
+          experienceResult,
+          [
+            "exp_company-value",
+            "exp_job-value",
+            "exp_datestart-value",
+            "exp_dateend-value",
+            "exp_descripition-value",
+          ],
+          4
+        );
+      };
+
+      listEducation.onclick = (event) => {
+        //lay ra cai o input dang duoc click
+        itemEducation = event.target;
+
+        //bat su kien khi nguoi dung thay doi du lieu trong input
+        itemEducation.onchange = (event) => {
+          const value = event.target.value;
+          const key = event.target.name;
+
+          let info = { value, key, group: key.slice(0, key.length - 1) };
+
+          if (education.map((e) => e.key).includes(info.key)) {
+            education = education.filter((e) => e.key !== info.key);
+            education = [...education, info];
+          } else {
+            education = [...education, info];
+          }
+        };
+
+        itemEducation.onblur = () => {
+          format(
+            education,
+            ["school", "degree", "major", "datestart", "dateend", "descripition"],
+            educationResult
+          );
+        };
+
+        itemEducation.onclick = () => {
+          if (itemEducation.getAttribute("type") === "button") {
+            //kiem tra xem no co phai la button ko cho chac
+            let id = itemEducation.id;
+            let educationRemove = document.querySelector(`#${id}`);
+            educationRemove.remove();
+
+            // xoa du lieu trong cai education di
+            //id = education1 => xoa tat ca key : [school1, degree1, datestart1, ...]
+            //[{value: "", key: "school1", group: "school"}, {value: "", key: "", group: "school"}, {value: "", key: "", group: "degree"}, {value: "", key: "", group: "school"}]
+            education = education.filter(
+              (e) => !e.key.includes(id.slice(id.length - 1))
+            );
+
+            // format lai cai educationResult
+            format(
+              education,
+              ["school", "degree", "major", "datestart", "dateend", "descripition"],
+              educationResult
+            );
+          }
+        };
+      };
+
+      btnAddEducation.onclick = () => {
+        addEducationIntoListEducation();
+        update(
+          educationResult,
+          [
+            "edu_school-value",
+            "edu_degree-value",
+            "edu_major-value",
+            "edu_datestart-value",
+            "edu_dateend-value",
+            "edu_descripition-value",
+          ],
+          4
+        );
+      };
+
+      ///xu ly du lieu cho phan them ky nang
+const btnAddSkill = document.querySelector(".btn-add-skill");
+let listSkill = document.querySelector(".list-skill");
+
+let amountSkill = 0;
+
+let skills = [];
+let skillsResult = {
+  skill: [],
+  level: [],
+};
+
+const formatSkill = (skills) => {
+  skills.forEach((element) => {
+    const { group, key } = element;
+    if (group === "skill") {
+      if (!skillsResult.skill.map((e) => e.key).includes(key))
+        skillsResult.skill = [...skillsResult.skill, element];
+    } else {
+      if (!skillsResult.level.map((e) => e.key).includes(key))
+        skillsResult.level = [...skillsResult.level, element];
+    }
+  });
+
+  //console.log(formatEducation);
+};
+
+//cap nhat lai skillResult sau khi da xoa cac phan tu trong skills
+const updateSkillResult = (key) => {
+  console.log(key);
+  skillsResult.skill = skillsResult.skill.filter(
+    (e) => !e.key.includes(key.slice(key.length - 1))
+  );
+  skillsResult.level = skillsResult.level.filter(
+    (e) => !e.key.includes(key.slice(key.length - 1))
+  );
+};
+
+const updateSkill = () => {
+  const { skill, level } = skillsResult;
+  const skillValue = document.querySelectorAll(".skill-value");
+  const levelValue = document.querySelectorAll(".level-value");
+  skillValue.forEach((element) => {
+    //element: #school1
+    let temp = skill.filter((e) => e.key === element.getAttribute("id"));
+    element.setAttribute("value", temp.length > 0 ? temp[0].value : "");
+    //cai educationResult: {[value: , key: school1, group:, ], [], ...}
+  });
+  //console.log(levelValue[0].options[1].selected);
+
+  levelValue.forEach((element) => {
+    console.log(element.getAttribute("id"));
+    let temp = level.filter((e) => e.key === element.getAttribute("id"));
+    console.log(temp);
+    element.value = temp.length > 0 ? temp[0].value : '';
+  });
+};
+
+btnAddSkill.onclick = () => {
+  let skillItem = `<div class="skill-item" id="skills${amountSkill}">
+    <div class="r-flex">
+    <div class="skill w-1-2">
+    <label for="skill${amountSkill}" class="form-label">ký năng</label>
+    <input type="text" name="skill${amountSkill}" id="skill_skill${amountSkill}" value='' class="skill_skill-value form-input" >
+</div>
+<div class="level w-1-2">
+    <label for="level${amountSkill}" class="form-label">đánh giá</label>
+    <select name="level${amountSkill}" id="skill_level${amountSkill}" class="skill_level-value form-input">
+        <option value="" selected>--Please choose an option--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+</div>
+    </div>
+    <button type="button" id="skills${amountSkill}" class="btn" >xoá</button>
+    
+</div>`;
+
+  listSkill.innerHTML += skillItem;
+  update(skillsResult, ['skill_skill-value', 'skill_level-value'], 6);
+  amountSkill++;
+};
+
+listSkill.onclick = (e) => {
+  itemSkill = e.target;
+
+  itemSkill.onchange = (event) => {
+    const value = event.target.value;
+    const key = event.target.name;
+
+    let info = {
+      value,
+      key,
+      group: key.slice(0, key.length - 1),
+    };
+
+    //kiem tra
+    if (skills.map((e) => e.key).includes(info.key)) {
+      //tra ve phan tu co key trung voi cai vua nhap vao
+      skills = skills.filter((e) => e.key !== info.key);
+      skills = [...skills, info];
+    } else {
+      skills = [...skills, info];
+    }
+  };
+
+  //khi di chuyen ra ngoi vung nhap thi format du lieu
+  itemSkill.onblur = () => {
+    format(skills, ['skill', 'level'], skillsResult);
+  };
+
+  itemSkill.onclick = () => {
+    if (itemSkill.getAttribute("type") === "button") {
+      let key = itemSkill.id;
+      let skillRemove = document.querySelector(`#${key}`);
+      skillRemove.remove();
+      skills = skills.filter((e) => !e.key.includes(key.slice(key.length - 1)));
+      format(skills, ['skill', 'level'], skillsResult);
+    }
+  };
+};
+    </script>
+  </body>
+</html>
