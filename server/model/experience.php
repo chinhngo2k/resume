@@ -16,3 +16,14 @@ function addExperienceByPersonalId($job, $company, $descripition, $datestart, $d
     $query = "insert experience(job, company, descripition, datestart, dateend, personal_id) values('$job', '$company', '$descripition', '$datestart', '$dateend', $personal_id)";
     $db->exec($query);
 }
+
+function deleteExperience($per_id)
+{
+    global $db;
+    $query = "delete from experience where personal_id = $per_id";
+    try {
+        $db->exec($query);
+    } catch (Exception $e) {
+        echo $e;
+    }
+}

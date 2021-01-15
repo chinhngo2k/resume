@@ -17,6 +17,13 @@ function addEducationByPersonalId($school, $degree, $descripition, $datestart, $
     $db->exec($query);
 }
 
-function editEducation()
+function deleteEducation($per_id)
 {
+    global $db;
+    $query = "delete from education where personal_id = $per_id";
+    try {
+        $db->exec($query);
+    } catch (Exception $e) {
+        echo $e;
+    }
 }
