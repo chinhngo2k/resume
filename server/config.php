@@ -2,9 +2,8 @@
 $dsn = 'mysql:host=localhost;dbname=cv';
 $username = 'root';
 $password = '';
-try{
+try {
     $db = new PDO($dsn, $username, $password);
-}
-catch(exception $e){
+} catch (exception $e) {
     echo $e;
 }

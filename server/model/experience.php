@@ -17,3 +17,16 @@ function addExperienceByPersonalId($job, $company, $descripition, $datestart, $d
     $db->exec($query);
 }
 
+<<<<<<< HEAD
+=======
+function deleteExperience($per_id)
+{
+    global $db;
+    $query = "delete from experience where personal_id = $per_id";
+    try {
+        $db->exec($query);
+    } catch (Exception $e) {
+        echo $e;
+    }
+}
+>>>>>>> 5ac017fb8ff8491af16033e94a32d64ce02615cf
