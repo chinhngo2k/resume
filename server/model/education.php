@@ -17,6 +17,6 @@ function addEducationByPersonalId($school, $degree, $descripition, $datestart, $
     $db->exec($query);
 }
 
-function editEducation(){
-    
+function editEducation()
+{
 }
