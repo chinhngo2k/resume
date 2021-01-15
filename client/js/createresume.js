@@ -631,7 +631,7 @@ btnSubmit.onclick = async () => {
     body: JSON.stringify({education: data.education, personal_id})
   });
 
-  await fetch("http://localhost/resume/server/api/expericence/addExperienceByPersonalId.php", {
+  await fetch("http://localhost/resume/server/api/experience/addExperienceByPersonalId.php", {
     method: "post",
     body: JSON.stringify({experience: data.experience, personal_id})
   });

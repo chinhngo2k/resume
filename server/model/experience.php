@@ -5,7 +5,7 @@
 function getExperienceByPersonalId($personal_id)
 {
     global $db;
-    $experience = $db->query("select * from experience where personal_id = '$personal_id'");
+    $experience = $db->query("select job, company, datestart, dateend, descripition from experience where personal_id = '$personal_id'");
     $experience = $experience->fetchAll(PDO::FETCH_ASSOC);
     return $experience;
 }
