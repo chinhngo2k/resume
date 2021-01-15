@@ -37,17 +37,28 @@ foreach ($countGroup as &$element) {
 }
 
 $index = 0;
-foreach ($result as $element) {
-    //trong truong hop nguoi dung ko nhap day du thong tin;
-    $skill = isset($element["skill$index"]) ? $element["skill$index"] : '';
-    $level = isset($element["level$index"]) ? $element["level$index"] : '';
+// foreach ($result as $element) {
+//     //trong truong hop nguoi dung ko nhap day du thong tin;
+//     $skill = isset($element["skill$index"]) ? $element["skill$index"] : '';
+//     $level = isset($element["level$index"]) ? $element["level$index"] : '';
+//     //$address = isset($element["address$index"]) ? $element["address$index"] : '';
+//     // $descripition = isset($element["descripition$index"]) ? $element["descripition$index"] : '';
+//     // $datestart = isset($element["datestart$index"]) ? $element["datestart$index"] : '';
+//     // $dateeend = isset($element["dataeend$index"]) ? $element["dataeend$index"] : '';
+//     addSkillByPersonalId($skill, intval($level), intval($personal_id));
+//     $index++;
+// }
+
+foreach($countGroup as $id){
+    //var_dump($result[$index]["school$id"]);
+    $skill = isset($result[$index]["skill$id"]) ? $result[$index]["skill$id"] : '';
+    $level = isset($result[$index]["level$id"]) ? $result[$index]["level$id"] : '';
     //$address = isset($element["address$index"]) ? $element["address$index"] : '';
-    // $descripition = isset($element["descripition$index"]) ? $element["descripition$index"] : '';
-    // $datestart = isset($element["datestart$index"]) ? $element["datestart$index"] : '';
-    // $dateeend = isset($element["dataeend$index"]) ? $element["dataeend$index"] : '';
+    // $descripition = isset($result[$index]["descripition$id"]) ? $result[$index]["descripition$id"] : '';
+    // $datestart = isset($result[$index]["datestart$id"]) ? $result[$index]["datestart$id"] : '';
+    // $dateeend = isset($result[$index]["dateend$id"]) ? $result[$index]["dateend$id"] : '';
     addSkillByPersonalId($skill, intval($level), intval($personal_id));
     $index++;
 }
-
 //chi viec them tung phan tu trong result nay vao co so du lieu la xong
-var_dump($result);
+//var_dump($result);

@@ -14,19 +14,22 @@ header('Access-Control-Allow-Origin: *');
 
 $data = file_get_contents('php://input');
 $data = json_decode($data, true);
+$person = $data['person'];
+$acc_id = intval($data['acc_id']);
 
-$fullname = $data['fullname'];
-$birthday = $data['birthday'];
-$sex = intval($data['sex']);
-$mail = $data['mail'];
-$address = $data['address'];
-$phone = intval($data['phone']);
-$job = $data['job'];
-$facebook_link = $data['facebook_link'];
-$github_link = $data['github_link'];
-$carrer = $data['carrer'];
+$fullname = $person['fullname'];
+$birthday = $person['birthday'];
+$sex = intval($person['sex']);
+$mail = $person['mail'];
+$address = $person['address'];
+$phone = intval($person['phone']);
+$job = $person['job'];
+$facebook_link = $person['facebook_link'];
+//$github_link = $person['github_link'];
+$carrer = $person['carrer'];
 
-$personla_id = addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, $facebook_link, $github_link, $carrer);
+
+$personla_id = addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, $facebook_link, $carrer, $acc_id);
 
 echo json_encode($personla_id);
 
