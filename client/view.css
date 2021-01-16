@@ -427,6 +427,7 @@
     }
     
     .nav__mobile {
+        z-index: 1000;
         display: none;
         position: fixed;
         top: 0;
@@ -577,17 +578,11 @@
         .nav__mobile--list ul li a:focus>.nav__mobile {
             display: none;
         }
-        .item--divided span {
-            color: #1565c0;
-        }
     }
     
     @media only screen and (max-width: 46.1875em) {
         .content__header {
             display: none;
-        }
-        .item--divided span {
-            color: #1565c0;
         }
         .nav__mobile {
             width: 100%;
@@ -615,6 +610,7 @@
             width: 68%;
             text-align: right;
         }
+        .
     }
     
     @keyframes fadeIn {
