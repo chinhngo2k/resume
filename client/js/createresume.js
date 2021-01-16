@@ -675,4 +675,5 @@ btnSubmit.onclick = async () => {
       body: JSON.stringify({ skills: data.skills, personal_id }),
     }
   );
+  window.location.replace('http://localhost/resume/client/myaccount.html');
 };

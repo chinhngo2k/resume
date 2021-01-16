@@ -26,4 +26,4 @@ $facebook_link = $person['facebook_link'];
 //$github_link = $person['github_link'];
 $carrer = $person['carrer'];
 
-//updatePersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, $facebook_link, $carrer, $per_id);
+updatePersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, $facebook_link, $carrer, $per_id);

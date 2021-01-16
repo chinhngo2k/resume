@@ -16,8 +16,6 @@ function addEducationByPersonalId($school, $degree, $descripition, $datestart, $
     $query = "insert education(school, degree, descripition, datestart, dateend, personal_id) values('$school', '$degree', '$descripition', '$datestart', '$dateend', $personal_id)";
     $db->exec($query);
 }
-<<<<<<< HEAD
-=======
 
 function deleteEducation($per_id)
 {
@@ -29,4 +27,3 @@ function deleteEducation($per_id)
         echo $e;
     }
 }
->>>>>>> 5ac017fb8ff8491af16033e94a32d64ce02615cf

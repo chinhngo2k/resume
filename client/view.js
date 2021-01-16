@@ -3,6 +3,8 @@ url = new URL(url);
 let id = url.searchParams.get("personal_id");
 //console.log(id);
 
+let temp = {};
+
 //lay du lieu do vao phan gioi thieu thong tin co ban
 const updatePersonalInfo = (personal) => {
     const aboutCarrer = document.querySelector(".about-carrer");
@@ -134,6 +136,7 @@ fetch(
     )
     .then((res) => res.json())
     .then((data) => {
+        temp = data;
         console.log(data);
         updatePersonalInfo(data);
         updateEducation(data.education);

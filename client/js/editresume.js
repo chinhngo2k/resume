@@ -683,7 +683,7 @@ btnSubmit.onclick = async () => {
     body: JSON.stringify({person: personal, per_id: id})
   });
 
-  await fetch(`http://localhost/resume/server/api/resume/deleteResumeNotPerson.php?per_id=${id}`);
+  await fetch(`http://localhost/resume/server/api/resume/deleteResumeNotPersonal.php?per_id=${id}`);
 
   //them lai du lieu moi vao csdl
   await fetch(
