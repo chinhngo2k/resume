@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/editresume.css" />
   </head>
+
   <body>
     <div class="container">
       <div class="wrapper">
@@ -15,20 +16,34 @@
             <!-- ho ten -->
             <div class="fullname w-1-3">
               <label for="fullname" class="form-label">họ và tên</label>
-              <input type="text" name="fullname" id="fullname" class="form-input" />
+              <input
+                type="text"
+                name="fullname"
+                id="fullname"
+                class="form-input"
+              />
+              <span class="error err-fullname"></span>
             </div>
             <!-- ngay sinh -->
             <div class="birthday w-1-3">
               <label for="birthday" class="form-label">ngày sinh</label>
-              <input type="date" name="birthday" id="birthday" class="form-input" />
+              <input
+                type="date"
+                name="birthday"
+                id="birthday"
+                class="form-input"
+              />
+              <span class="error err-birthday"></span>
             </div>
             <!-- gioi tinh -->
             <div class="sex w-1-3">
               <label for="sex" class="form-label">giới tính</label>
               <select name="sex" id="sex" class="form-input">
+                <option value="5" selected>vui lòng chọn giới tính</option>
                 <option value="1">nam</option>
                 <option value="0">nữ</option>
               </select>
+              <span class="error err-sex"></span>
             </div>
           </div>
           <div class="r-flex">
@@ -36,16 +51,24 @@
             <div class="mail w-1-3">
               <label for="mail" class="form-label">mail</label>
               <input type="email" name="mail" id="mail" class="form-input" />
+              <span class="error err-mail"></span>
             </div>
             <!-- dia chi -->
             <div class="address w-1-3">
               <label for="address" class="form-label">địa chỉ</label>
-              <input type="text" name="address" id="address" class="form-input"/>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                class="form-input"
+              />
+              <span class="error err-address"></span>
             </div>
             <!-- avatar -->
             <div class="avatar w-1-3">
               <label for="avatar" class="form-label">ảnh đại diện</label>
-              <input type="file" name="avatar" id="avatar" class="form-input"/>
+              <input type="file" name="avatar" id="avatar" class="form-input" />
+              <span class="error err-fullname"></span>
             </div>
           </div>
           <div class="r-flex">
@@ -53,29 +76,55 @@
             <div class="phone w-1-3">
               <label for="phone" class="form-label">số điện thoại</label>
               <input type="text" name="phone" id="phone" class="form-input" />
+              <span class="error err-phone"></span>
             </div>
             <!-- vi tri cong viec -->
             <div class="job w-1-3">
               <label for="job" class="form-label">vị trí công việc</label>
-              <input type="text" name="job" id="job" class="form-input"/>
+              <input type="text" name="job" id="job" class="form-input" />
+              <span class="error err-job"></span>
             </div>
           </div>
           <div class="r-flex">
             <!-- link fb -->
             <div class="facebook-link w-1-3">
               <label for="db-link" class="form-label">Link Facebook</label>
-              <input type="text" name="fb-link" id="fb-link" class="form-input" />
+              <input
+                type="text"
+                name="fb-link"
+                id="fb-link"
+                class="form-input"
+              />
+              <span class="error err-fb-link"></span>
             </div>
             <!-- link github -->
             <div class="github-link w-1-3">
               <label for="gh-link" class="form-label">Link github</label>
-              <input type="text" name="gh-link" id="gh-link" class="form-input" />
+              <input
+                type="text"
+                name="gh-link"
+                id="gh-link"
+                class="form-input"
+              />
+              <span class="error err-gh-link"></span>
+            </div>
+            <div class="instagram-link w-1-3">
+              <label for="ins-link" class="form-label">Link instagram</label>
+              <input
+                type="text"
+                name="ins-link"
+                id="ins-link"
+                class="form-input"
+              />
+              <span class="error err-ins-link"></span>
             </div>
           </div>
           <div>
             <!-- dinh huong nghe nghiep -->
             <div class="carrer w-1-3">
-              <label for="carrer" class="form-label">định hướng nghề nghiệp</label>
+              <label for="carrer" class="form-label"
+                >định hướng nghề nghiệp</label
+              >
               <textarea
                 name="carrer"
                 id="carrer"
@@ -83,6 +132,7 @@
                 rows="10"
                 class="form-input"
               ></textarea>
+              <span class="error err-carrer"></span>
             </div>
           </div>
         </div>
@@ -115,11 +165,13 @@
           </div>
         </div>
         <div class="btn-submit pd">
-          <button>Tao CV</button>
+          <button>Hoàn Thành</button>
         </div>
+        <span class="errCreate error"></span>
       </div>
     </div>
     <!-- <button class="change">change</button> -->
-    <script src="./js/createresume.js"></script>
+    <!-- <script src="./js/createresume.js"></script> -->
+    <script src="./js/createv2.js"></script>
   </body>
 </html>

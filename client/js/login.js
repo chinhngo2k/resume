@@ -5,7 +5,7 @@ const btnSubmit = document.querySelector('.form__button button');
 
 let account = {};
 //chua loi khi dang nhap khong thanh cong
-let error = [];
+let error = '';
 
 email.onchange = (e) => {
     account = {...account, email: e.target.value};
@@ -21,6 +21,7 @@ btnSubmit.onclick = async () => {
     formData.append('email', account.email);
     formData.append('password', account.password);
 
+
     const res = await fetch("http://localhost/resume/server/api/account/login.php", {
         method: "post",
         body: formData
@@ -33,6 +34,11 @@ btnSubmit.onclick = async () => {
         window.location.replace('http://localhost/resume/client/myaccount.html');
     }
     else{
-        error = [...error, data.error];
+        error = data.error;
+    }
+
+    if(error){
+        const errorSpan = document.querySelector('.error');
+        errorSpan.innerHTML = error;
     }
 }

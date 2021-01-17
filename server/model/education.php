@@ -10,10 +10,10 @@ function getEducationByPersonalId($personal_id)
     return $education;
 }
 
-function addEducationByPersonalId($school, $degree, $descripition, $datestart, $dateend, $personal_id)
+function addEducationByPersonalId($school, $degree, $address, $descripition, $datestart, $dateend, $personal_id)
 {
     global $db;
-    $query = "insert education(school, degree, descripition, datestart, dateend, personal_id) values('$school', '$degree', '$descripition', '$datestart', '$dateend', $personal_id)";
+    $query = "insert education(school, degree, address, descripition, datestart, dateend, personal_id) values('$school', '$address', '$degree', '$descripition', '$datestart', '$dateend', $personal_id)";
     $db->exec($query);
 }
 

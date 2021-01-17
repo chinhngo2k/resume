@@ -14,10 +14,15 @@ const updatePersonalInfo = (personal) => {
     const number = document.getElementById("contact-number");
     const mail = document.getElementById("contact-email");
     const nameMail = document.getElementById("nameMain");
+    const nameMail2 = document.querySelector(".nameMain");
     const workMain = document.getElementById("workMain");
+    const workMain2 = document.querySelector(".workMain");
     const ava = document.querySelector(".info--img img");
+    const ava2 = document.querySelector(".info--img2 img");
     const faceLink = document.getElementById("facebook-link");
+    const faceLink2 = document.getElementById("facebook-link2");
     const gitLink = document.getElementById("github-link");
+    const gitLink2 = document.getElementById("github-link2");
 
     aboutCarrer.innerHTML = personal.carrer;
     fullname.innerHTML = personal.fullname;
@@ -26,10 +31,15 @@ const updatePersonalInfo = (personal) => {
     number.innerHTML = personal.phone;
     mail.innerHTML = personal.mail;
     workMain.innerHTML = personal.job;
+    workMain2.innerHTML = personal.job;
     ava.setAttribute("src", personal.avatar);
+    ava2.setAttribute("src", personal.avatar);
     faceLink.setAttribute("href", personal.facebook_link);
+    faceLink2.setAttribute("href", personal.facebook_link);
+    nameMail2.innerHTML = personal.fullname;
     nameMail.innerHTML = personal.fullname;
     gitLink.setAttribute("href", personal.github_link);
+    gitLink2.setAttribute("href", personal.github_link);
 };
 
 //do du lieu vao phan hoc van
@@ -54,7 +64,7 @@ const updateEducation = (education) => {
             <p>${datestart} - ${dateend}</p>
         </div>
         <div class="item__school">
-            <p>${address}</p>
+            <p>${degree}</p>
         </div>
     </div>
     <div class="item--divided">
@@ -76,7 +86,6 @@ const updateEducation = (education) => {
 
 const updateExperience = (experience) => {
     const listExperience = document.querySelector(".experience .timeline__list");
-    console.log("sadjhagh");
     experience.forEach((element) => {
         const { company, job, address, descripition, datestart, dateend } = element;
         let item = `<div class="timeline__item">
@@ -85,7 +94,7 @@ const updateExperience = (experience) => {
                 <p>${datestart} - ${dateend}</p>
             </div>
             <div class="item__school">
-                <p>${address}</p>
+                <p>${company}</p>
             </div>
         </div>
         <div class="item--divided">
@@ -93,7 +102,7 @@ const updateExperience = (experience) => {
         </div>
         <div class="item--right">
             <div class="item__title">
-                <p>${company}</p>
+                <p>${job}</p>
             </div>
             <div class="item__subtitle">
                 <p>${descripition}</p>
@@ -106,31 +115,37 @@ const updateExperience = (experience) => {
 
 const updateSkills = (skills) => {
     const listSkills = document.querySelector(".skill-list");
-    skills.forEach(element => {
-        let item = `<div class="skill-item">
-        <p class="skill-title">${element.skill}</p>
-        <div class="skill-level">
-            <ul class="${element.skill}">
-                <li class=""></li>
-                <li class=""></li>
-                <li class=""></li>
-                <li class=""></li>
-                <li class=""></li>
-            </ul>
+    skills.forEach((element) => {
+        let item = `<div class="wrap-skill-item">
+        <div class="skill-item">
+            <p class="skill-title">${element.skill}</p>
+            <div class="skill-level">
+                <ul class="${element.skill}">
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="item-info">
+            <span>${element.time}</span>
+            <p>${element.descripition}</p>
         </div>
     </div>`;
-    listSkills.innerHTML += item;
-    const listNode = document.querySelectorAll(`.skill-item .${element.skill} li`);
-    for(let i = 0; i < element.level; i++){
-        listNode[i].className += ' active';
-    }
-
-    
+        listSkills.innerHTML += item;
+        const listNode = document.querySelectorAll(
+            `.skill-item .${element.skill} li`
+        );
+        for (let i = 0; i < element.level; i++) {
+            listNode[i].className += " active";
+        }
     });
-    
-}
+};
 
-//viet lai cho nay nhuwng de chinh commit
+//fetch api
 fetch(
         `http://localhost/resume/server/api/resume/getResumeByPersonalId.php?personal_id=${id}`
     )

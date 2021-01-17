@@ -25,9 +25,8 @@ $address = $person['address'];
 $phone = $person['phone'];
 $job = $person['job'];
 $facebook_link = $person['facebook_link'];
-//$github_link = $person['github_link'];
+$github_link = $person['github_link'];
 $carrer = $person['carrer'];
-
 
 $personla_id = addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, $facebook_link, $carrer, $acc_id);
 

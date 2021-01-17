@@ -635,11 +635,15 @@ btnSubmit.onclick = async () => {
     "http://localhost/resume/server/api/personal/addPersonal.php",
     {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
       body: JSON.stringify({person: data.person, acc_id: id}),
     }
   );
   const personal_id = await resPersonal.json();
-  //console.log(typeof Number(personal_id));
+  console.log(typeof Number(personal_id));
 
   let formData = new FormData();
   formData.append("avatar", person.avatar);

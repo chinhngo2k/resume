@@ -60,11 +60,11 @@ foreach($countGroup as $id){
     //var_dump($result[$index]["school$id"]);
     $school = isset($result[$index]["school$id"]) ? $result[$index]["school$id"] : '';
     $degree = isset($result[$index]["degree$id"]) ? $result[$index]["degree$id"] : '';
-    //$address = isset($element["address$index"]) ? $element["address$index"] : '';
+    $address = isset($result[$index]["address$id"]) ? $result[$index]["address$id"] : ''; 
     $descripition = isset($result[$index]["descripition$id"]) ? $result[$index]["descripition$id"] : '';
     $datestart = isset($result[$index]["datestart$id"]) ? $result[$index]["datestart$id"] : '';
     $dateeend = isset($result[$index]["dateend$id"]) ? $result[$index]["dateend$id"] : '';
-    addEducationByPersonalId($school, $degree, $descripition, $datestart, $datestart, intval($personal_id));
+    addEducationByPersonalId($school, $degree, $address, $descripition, $datestart, $datestart, intval($personal_id));
     $index++;
 }
 

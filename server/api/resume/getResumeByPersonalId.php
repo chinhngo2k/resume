@@ -20,9 +20,9 @@ if (isset($_GET['personal_id'])) {
 
     //lay thong tin ve hoc van
     $education = getEducationByPersonalId($personal_id);
-
+    //lay thong tin knlv
     $experience = getExperienceByPersonalId($personal_id);
-
+    //ki nang
     $skills = getSkillsByPerosnalId($personal_id);
 
 
@@ -31,21 +31,36 @@ if (isset($_GET['personal_id'])) {
 
     //cai education dang la 1 mang thi phai duyet qua tung phan tu de chinh sua
     foreach ($education as &$item) {
-        //item chinh la giai doan hoc 
-        $datestart = explode('-', $item['datestart']);
-        $item['datestart'] = "tháng $datestart[1], $datestart[0]";
+        //echo $item['datestart'];
+        if ($item['datestart'] === '0000-00-00' || $item['dateend'] === '0000-00-00') {
+            if ($item['datestart'] === '0000-00-00')
+                $item['datestart'] = '';
+            if ($item['dateend'] === '0000-00-00')
+                $item['dateend'] = 'present';
+        } else {
+            //item chinh la giai doan hoc 
+            $datestart = explode('-', $item['datestart']); //datestart la mang gap explode no se tach chuoi khi gap -
+            $item['datestart'] = "tháng $datestart[1], $datestart[0]";
 
-        $dateend = explode('-', $item['dateend']);
-        $item['dateend'] = "tháng $dateend[1], $dateend[0]";
+            $dateend = explode('-', $item['dateend']);
+            $item['dateend'] = "tháng $dateend[1], $dateend[0]";
+        }
     }
 
     foreach ($experience as &$item) {
-        //item chinh la giai doan hoc 
-        $datestart = explode('-', $item['datestart']);
-        $item['datestart'] = "tháng $datestart[1], $datestart[0]";
+        if ($item['datestart'] === '0000-00-00' || $item['dateend'] === '0000-00-00') {
+            if ($item['datestart'] === '0000-00-00')
+                $item['datestart'] = '';
+            if ($item['dateend'] === '0000-00-00')
+                $item['dateend'] = 'present';
+        } else {
+            //item chinh la giai doan hoc 
+            $datestart = explode('-', $item['datestart']); //datestart la mang gap explode no se tach chuoi khi gap -
+            $item['datestart'] = "tháng $datestart[1], $datestart[0]";
 
-        $dateend = explode('-', $item['dateend']);
-        $item['dateend'] = "tháng $dateend[1], $dateend[0]";
+            $dateend = explode('-', $item['dateend']);
+            $item['dateend'] = "tháng $dateend[1], $dateend[0]";
+        }
     }
 
     //xu ly gioi tinh

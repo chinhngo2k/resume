@@ -5,7 +5,7 @@
 function getSkillsByPerosnalId($personal_id)
 {
     global $db;
-    $query = "select skill, level from skills where personal_id = $personal_id";
+    $query = "select skill, level, time, descripition from skills where personal_id = $personal_id";
     try {
         $skills = $db->query($query);
         $skills = $skills->fetchAll(PDO::FETCH_ASSOC);
@@ -16,10 +16,10 @@ function getSkillsByPerosnalId($personal_id)
     }
 }
 
-function addSkillByPersonalId($skill, $level, $personal_id)
+function addSkillByPersonalId($skill, $level, $time, $descripition, $personal_id)
 {
     global $db;
-    $query = "insert skills(skill, level, personal_id) values('$skill', $level, $personal_id)";
+    $query = "insert skills(skill, level, time, descripition, personal_id) values('$skill', $level, '$time', '$descripition', $personal_id)";
     try {
         $db->exec($query);
     } catch (Exception $e) {

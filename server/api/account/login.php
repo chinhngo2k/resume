@@ -17,7 +17,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
         echo json_encode(['error' => '', 'id' => $id]);
     }
     else{
-        echo json_encode(['error' => 'ten tai khoan hoac mat khau khong chinh xac']);
+        echo json_encode(['error' => 'tên đăng nhập hoặc mật khẩu không chính xác']);
     }
 }
 else{

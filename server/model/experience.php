@@ -10,10 +10,10 @@ function getExperienceByPersonalId($personal_id)
     return $experience;
 }
 
-function addExperienceByPersonalId($job, $company, $descripition, $datestart, $dateend, $personal_id)
+function addExperienceByPersonalId($job, $company, $address, $descripition, $datestart, $dateend, $personal_id)
 {
     global $db;
-    $query = "insert experience(job, company, descripition, datestart, dateend, personal_id) values('$job', '$company', '$descripition', '$datestart', '$dateend', $personal_id)";
+    $query = "insert experience(job, company, address, descripition, datestart, dateend, personal_id) values('$job', '$company', '$address', '$descripition', '$datestart', '$dateend', $personal_id)";
     $db->exec($query);
 }
 

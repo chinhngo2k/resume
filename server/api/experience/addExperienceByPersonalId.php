@@ -83,11 +83,11 @@ foreach($countGroup as $id){
     //var_dump($result[$index]["school$id"]);
     $job = isset($result[$index]["job$id"]) ? $result[$index]["job$id"] : '';
     $company = isset($result[$index]["company$id"]) ? $result[$index]["company$id"] : '';
-    //$address = isset($element["address$index"]) ? $element["address$index"] : '';
+    $address = isset($result[$index]["address$id"]) ? $result[$index]["address$id"] : '';
     $descripition = isset($result[$index]["descripition$id"]) ? $result[$index]["descripition$id"] : '';
     $datestart = isset($result[$index]["datestart$id"]) ? $result[$index]["datestart$id"] : '';
     $dateeend = isset($result[$index]["dateend$id"]) ? $result[$index]["dateend$id"] : '';
-    addExperienceByPersonalId($job, $company, $descripition, $datestart, $dateeend, intval($personal_id));
+    addExperienceByPersonalId($job, $company, $address, $descripition, $datestart, $dateeend, intval($personal_id));
     $index++;
 }
 

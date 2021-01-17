@@ -32,8 +32,7 @@ function addPersonal($fullname, $birthday, $sex, $mail, $address, $phone, $job, 
     global $db;
     $code = md5(uniqid(rand(), true));
     //echo $birthday;
-    $query = "insert personal(fullname, birthday, sex, mail, address, phone, job, facebook_link, carrer, code, acc_id) values('$fullname', '$birthday', $sex, '$mail', '$address', $phone, '$job', '$facebook_link', '$carrer', '$code', $acc_id)";
-    //echo $query;
+    $query = "insert personal(fullname, birthday, sex, mail, address, phone, job, facebook_link, carrer, code, acc_id) values('$fullname', '$birthday', $sex, '$mail', '$address', '$phone', '$job', '$facebook_link', '$carrer', '$code', $acc_id)";
     $count = $db->exec($query);
     if ($count > 0) {
         //thuc hien thanh cong;

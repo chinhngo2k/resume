@@ -1,429 +1,638 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-li {
-    list-style: none;
-}
-
-a {
-    display: inline-block;
-    color: black;
-    text-decoration: none;
-}
-
-.container {
-    width: 100%;
-    background-color: #eceff1;
-    height: 100vh;
-    position: relative;
-    color: #000a12;
-}
-
-.wrapper {
-    width: 100%;
-    display: flex;
-    height: 90vh;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.container__part--left {
-    width: 10%;
-    display: block;
-}
-
-.content {
-    width: 80%;
-    border-radius: 3rem;
-    overflow: hidden;
-    background-color: white;
-    display: flex;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-
-/* style cho phan danh dai dien va thhong tin lien he */
-
-.content__header {
-    width: 30%;
-    background-color: #1565c0;
-}
-
-.info--img {
-    width: 200px;
-    height: 200px;
-    margin: 2rem auto;
-}
-
-.info--img img {
-    width: 100%;
-    border-radius: 50%;
-    border: 5px solid white;
-    object-fit: cover;
-    height: 100%;
-}
-
-.text--info {
-    text-align: center;
-    margin-top: 2rem 0;
-}
-
-.text--info h2 {
-    display: block;
-    font-size: 23px;
-    font-weight: 600;
-    color: #fff;
-    line-height: 1.2em;
-}
-
-.text--info h4 {
-    font-size: 18px;
-    font-weight: 300;
-    color: #fff;
-    margin: 10px 0;
-    line-height: 1.2em;
-    text-align: center;
-    text-transform: capitalize;
-}
-
-.text--info>ul {
-    margin: 10px auto;
-}
-
-.text--info>ul>li {
-    display: inline-block;
-    padding: 3px;
-    border-radius: 50%;
-}
-
-.text--info>ul>li:hover {
-    background-color: white;
-}
-
-.text--info>ul>li:hover i:first-child {
-    color: rgb(37, 118, 224);
-}
-
-.text--info>ul>li:hover i:nth-child(2) {
-    color: black;
-}
-
-.text--info>ul>li>a {
-    color: #fff;
-    border-radius: 20px;
-    font-size: 18px;
-    padding: 0;
-    height: 30px;
-    width: 30px;
-    display: block;
-    line-height: 30px;
-    text-align: center;
-    opacity: 0.9;
-}
-
-
-/* het phan chinh sua anh dai dien voi may cai thong tin lien he */
-
-.content__body {
-    width: 70%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.hide-scroll {
-    width: 105%;
-    /* tai sao lai can cai height nay ?? */
-    height: 100%;
-    overflow: auto;
-    /* padding-right: 15px; */
-    scroll-behavior: smooth;
-    /* overflow-y: scroll; Add vertical scrollbar */
-}
-
-
-/* phan thong tin ca nhan */
-
-.about {
-    width: 80%;
-    margin: auto;
-    padding: 5% 0;
-}
-
-.about-heading {
-    color: #37474f;
-}
-
-.about-heading span {
-    color: #1565c0;
-}
-
-.about-info {
-    display: flex;
-    margin: 2rem 0;
-}
-
-.about-carrer {
-    width: 55%;
-    margin-right: 3rem;
-    color: #102027;
-    line-height: 25px;
-}
-
-.about-contact {
-    width: 45%;
-}
-
-.about-contact ul li {
-    margin: 0.5rem 0;
-}
-
-.about-contact ul li .contact-title {
-    font-weight: 600;
-    color: #1565c0;
-    padding: 0 0.25rem 0 0;
-}
-
-
-/* het phan thong tin ca nhan */
-
-
-/* chinh sua thong tin phan hoc van */
-
-.timeline {
-    width: 80%;
-    margin: auto;
-    padding: 5% 0;
-}
-
-.timeline__heading {
-    color: #37474f;
-}
-
-.timeline__heading span {
-    color: #1565c0;
-}
-
-.timeline__list {
-    margin: 2rem 0;
-}
-
-.timeline__item {
-    display: flex;
-}
-
-.item--left {
-    width: 35%;
-    text-align: right;
-}
-
-.item__date {
-    font-weight: 600;
-    color: #263238;
-}
-
-.item__school {
-    padding: 0.5rem 0;
-    color: #37474f;
-}
-
-.item--divided {
-    width: 5%;
-    height: auto;
-    text-align: center;
-    margin: 0 1.5rem;
-}
-
-.item--divided span {
-    width: 1px;
-    height: 100%;
-    background-color: #b0bec5;
-    display: inline-block;
-    position: relative;
-}
-
-.item--divided span::before {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    content: "";
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background-color: #1565c0;
-}
-
-.item--right {
-    width: 60%;
-    padding-bottom: 1.5rem;
-}
-
-.item__title {
-    font-weight: 700;
-    text-transform: capitalize;
-    color: #263238;
-}
-
-.item__subtitle {
-    padding: 0.5rem 0;
-    line-height: 1.5rem;
-}
-
-.nav {
-    width: 10%;
-    position: relative;
-}
-
-.menu {
-    padding: 30px 10px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-flex;
-    flex-direction: column;
-    background-color: white;
-    justify-content: center;
-    border-radius: 30px;
-}
-
-.menu li {
-    padding: 10px 5px;
-}
-
-.menu li i {
-    font-size: 30px;
-    color: rgb(192, 192, 192);
-}
-
-
-/* phan ky nang */
-
-.skills-heading {
-    color: #37474f;
-}
-
-.skill-list {
-    margin: 4rem 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem 2rem;
-}
-
-.skill-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.skill-title {
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #263238;
-}
-
-.skill-level ul {
-    display: flex;
-    padding: 0 0.5rem;
-}
-
-.skill-level li {
-    display: inline-block;
-    min-width: 1rem;
-    min-height: 1rem;
-    border-radius: 50%;
-    border: 2px solid #37474f;
-    margin: 0 0.25rem;
-}
-
-.active {
-    background-color: #1565c0;
-    border: none !important;
-}
-
-
-/* cho phan thanh dieu huong */
-
-.menu {
-    position: relative;
-}
-
-.menu li span {
-    background-color: #1565c0;
-    color: white;
-    padding: 0.5rem 0.75rem;
-    position: absolute;
-    right: 0;
-    /* thuoc tinh nay gio moi biet */
-    width: max-content;
-    text-transform: capitalize;
-    visibility: hidden;
-}
-
-.menu li:hover span {
-    visibility: visible;
-    right: 100%;
-    transition: 500ms;
-}
-
-.contact-heading {
-    color: #37474f;
-    margin: 20px 0;
-}
-
-.contact__map {
-    margin: 20px 0;
-}
-
-.contact__form form>div {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-}
-
-.contact__form .contact__form--name {
-    width: 47%;
-}
-
-.contact__form input {
-    display: inline-block;
-    outline: 0;
-    height: 40px;
-    border-radius: 6px;
-    border: 1px solid #1565c0;
-    padding: 10px;
-}
-
-.contact__form .contact__form--email {
-    width: 47%;
-}
-
-#contact__form--mess {
-    display: block;
-    height: 100px;
-    border-radius: 6px;
-    outline: 0;
-    border: 1px solid #1565c0;
-    padding: 10px;
-    width: 100%;
-    margin: 10px 0;
-}
-
-.contact__form--send {
-    display: block;
-    background-color: #1565c0;
-    color: white;
-    border: 0;
-    padding: 5px 10px;
-    font-size: 17px;
-    border-radius: 6px;
-    outline: 0;
-}
-
-.contact__form--send i {
-    margin-right: 5px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    a {
+        display: inline-block;
+        color: black;
+        text-decoration: none;
+    }
+    
+    .container {
+        width: 100%;
+        background-color: #eceff1;
+        height: 100vh;
+        position: relative;
+        color: #000a12;
+    }
+    
+    .wrapper {
+        width: 100%;
+        display: flex;
+        height: 90vh;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .container__part--left {
+        width: 10%;
+        display: block;
+    }
+    
+    .content {
+        width: 80%;
+        border-radius: 3rem;
+        overflow: hidden;
+        background-color: white;
+        display: flex;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+    /* style cho phan danh dai dien va thhong tin lien he */
+    
+    .content__header {
+        width: 30%;
+        background-color: #1565c0;
+    }
+    
+    .info--img {
+        width: 200px;
+        height: 200px;
+        margin: 2rem auto;
+    }
+    
+    .info--img img {
+        width: 100%;
+        border-radius: 50%;
+        border: 5px solid white;
+        object-fit: cover;
+        height: 100%;
+    }
+    
+    .text--info {
+        text-align: center;
+        margin-top: 2rem 0;
+    }
+    
+    .text--info h2 {
+        display: block;
+        font-size: 23px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.2em;
+    }
+    
+    .text--info h4 {
+        font-size: 18px;
+        font-weight: 300;
+        color: #fff;
+        margin: 10px 0;
+        line-height: 1.2em;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    
+    .text--info>ul {
+        margin: 10px auto;
+    }
+    
+    .text--info>ul>li {
+        display: inline-block;
+        padding: 3px;
+        border-radius: 50%;
+    }
+    
+    .text--info>ul>li:hover {
+        background-color: white;
+    }
+    
+    .text--info>ul>li:hover i:first-child {
+        color: rgb(37, 118, 224);
+    }
+    
+    .text--info>ul>li:hover i:nth-child(2) {
+        color: black;
+    }
+    
+    .text--info>ul>li>a {
+        color: #fff;
+        border-radius: 20px;
+        font-size: 18px;
+        padding: 0;
+        height: 30px;
+        width: 30px;
+        display: block;
+        line-height: 30px;
+        text-align: center;
+        opacity: 0.9;
+    }
+    /* het phan chinh sua anh dai dien voi may cai thong tin lien he */
+    
+    .content__body {
+        position: relative;
+        width: 70%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .hide-scroll {
+        width: 105%;
+        /* tai sao lai can cai height nay ?? */
+        height: 100%;
+        overflow: auto;
+        /* padding-right: 15px; */
+        scroll-behavior: smooth;
+        /* overflow-y: scroll; Add vertical scrollbar */
+    }
+    /* phan thong tin ca nhan */
+    
+    .about {
+        width: 80%;
+        margin: auto;
+        padding: 5% 0;
+    }
+    
+    .about-heading {
+        color: #37474f;
+    }
+    
+    .about-heading span {
+        color: #1565c0;
+    }
+    
+    .about-info {
+        display: flex;
+        margin: 2rem 0;
+    }
+    
+    .about-carrer {
+        width: 55%;
+        margin-right: 3rem;
+        color: #102027;
+        line-height: 25px;
+    }
+    
+    .about-contact {
+        width: 45%;
+    }
+    
+    .about-contact ul li {
+        margin: 0.5rem 0;
+    }
+    
+    .about-contact ul li .contact-title {
+        font-weight: 600;
+        color: #1565c0;
+        padding: 0 0.25rem 0 0;
+    }
+    /* het phan thong tin ca nhan */
+    /* chinh sua thong tin phan hoc van */
+    
+    .timeline {
+        width: 80%;
+        margin: auto;
+        padding: 5% 0;
+    }
+    
+    .timeline__heading {
+        color: #37474f;
+    }
+    
+    .timeline__heading span {
+        color: #1565c0;
+    }
+    
+    .timeline__list {
+        margin: 2rem 0;
+    }
+    
+    .timeline__item {
+        display: flex;
+    }
+    
+    .item--left {
+        width: 35%;
+        text-align: right;
+    }
+    
+    .item__date {
+        font-weight: 600;
+        color: #263238;
+    }
+    
+    .item__school {
+        padding: 0.5rem 0;
+        color: #37474f;
+    }
+    
+    .item--divided {
+        width: 5%;
+        height: auto;
+        text-align: center;
+        margin: 0 1.5rem;
+    }
+    
+    .item--divided span {
+        width: 1px;
+        height: 100%;
+        background-color: #b0bec5;
+        display: inline-block;
+        position: relative;
+    }
+    
+    .item--divided span::before {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        content: "";
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: #1565c0;
+    }
+    
+    .item--right {
+        width: 60%;
+        padding-bottom: 1.5rem;
+    }
+    
+    .item__title {
+        font-weight: 700;
+        text-transform: capitalize;
+        color: #263238;
+    }
+    
+    .item__subtitle {
+        padding: 0.5rem 0;
+        line-height: 1.5rem;
+    }
+    
+    .nav {
+        width: 10%;
+        position: relative;
+    }
+    
+    .menu {
+        padding: 30px 10px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-flex;
+        flex-direction: column;
+        background-color: white;
+        justify-content: center;
+        border-radius: 30px;
+    }
+    
+    .menu li {
+        padding: 10px 5px;
+    }
+    
+    .menu li i {
+        font-size: 30px;
+        color: rgb(192, 192, 192);
+    }
+    /* phan ky nang */
+    
+    .skills-heading {
+        color: #37474f;
+    }
+    
+    .skill-list {
+        margin: 4rem 0;
+        /* display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 2rem; */
+    }
+    .wrap-skill-item{
+        margin: 0.5rem 0;
+    }
+    .skill-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .item-info{
+        padding-left: 1rem;
+        padding-top: 0.25rem;
+    }
+    .item-info span{ 
+        font-size: 12px;
+        color: #102027;
+        font-weight: bold;
+        font-style: italic;
+    }
+    .item-info p{
+        color: #263238;
+    }
+    
+    .skill-title {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #263238;
+    }
+    
+    .skill-level ul {
+        display: flex;
+        padding: 0 0.5rem;
+    }
+    
+    .skill-level li {
+        display: inline-block;
+        min-width: 1rem;
+        min-height: 1rem;
+        border-radius: 50%;
+        border: 2px solid #37474f;
+        margin: 0 0.25rem;
+    }
+    
+    .active {
+        background-color: #1565c0;
+        border: none !important;
+    }
+    /* cho phan thanh dieu huong */
+    
+    .menu {
+        position: relative;
+    }
+    
+    .menu li span {
+        background-color: #1565c0;
+        color: white;
+        padding: 0.5rem 0.75rem;
+        position: absolute;
+        right: 0;
+        /* thuoc tinh nay gio moi biet */
+        width: max-content;
+        text-transform: capitalize;
+        visibility: hidden;
+    }
+    
+    .menu li:hover span {
+        visibility: visible;
+        right: 100%;
+        transition: 500ms;
+    }
+    
+    .contact-heading {
+        color: #37474f;
+        margin: 20px 0;
+    }
+    
+    .contact__map {
+        margin: 20px 0;
+    }
+    
+    .contact__form form>div {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+    
+    .contact__form .contact__form--name {
+        width: 47%;
+    }
+    
+    .contact__form input {
+        display: inline-block;
+        outline: 0;
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid #1565c0;
+        padding: 10px;
+    }
+    
+    .contact__form .contact__form--email {
+        width: 47%;
+    }
+    
+    #contact__form--mess {
+        display: block;
+        height: 100px;
+        border-radius: 6px;
+        outline: 0;
+        border: 1px solid #1565c0;
+        padding: 10px;
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .contact__form--send {
+        cursor: pointer;
+        display: block;
+        background-color: #1565c0;
+        color: white;
+        border: 0;
+        padding: 5px 10px;
+        font-size: 17px;
+        border-radius: 6px;
+        outline: 0;
+    }
+    
+    .contact__form--send i {
+        margin-right: 5px;
+    }
+    /* nav bar mobile */
+    
+    .nav__bar--mobile {
+        text-align: right;
+        margin-top: 15px;
+        margin-right: 45px;
+        display: none;
+        font-size: 25px;
+        z-index: 2;
+    }
+    
+    .nav__mobile {
+        z-index: 1000;
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 350px;
+        max-width: 100%;
+        background-color: #1565c0;
+        transition: transform linear 0.3s;
+        transition: all linear 0.3s;
+    }
+    
+    .nav__mobile {
+        transform: translateX(100%);
+    }
+    
+    .nav__input:checked~.nav__mobile {
+        transform: translateX(10%);
+        opacity: 1;
+    }
+    
+    .nav__overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        animation: fadeIn linear 0.2s;
+    }
+    
+    .nav__input:checked~.nav__overlay {
+        display: block;
+    }
+    
+    #content__header {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    
+    .nav__mobile--close {
+        display: block;
+        color: white;
+        font-size: 23px;
+        position: absolute;
+        top: 10px;
+        right: 70px;
+        z-index: 1;
+    }
+    
+    .item--divided {
+        color: #1565c0;
+    }
+    /* //reponsive */
+    
+    @media only screen and (max-width :1023px) {
+        .content__header {
+            display: none;
+        }
+        #content__header {
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+        }
+        .container__part--left {
+            display: none;
+        }
+        .nav {
+            display: none;
+        }
+        .content__body {
+            width: 100%;
+            margin: 0 auto;
+        }
+        .wrapper {
+            background-color: #eceff1;
+            flex-direction: column;
+            top: 0;
+            transform: translateY(0);
+            height: auto;
+        }
+        .content {
+            width: 80%;
+            margin: auto;
+            border-radius: 0;
+        }
+        .about-info {
+            flex-direction: column-reverse;
+        }
+        .contact__map iframe {
+            width: 100%;
+        }
+        .contact__form {
+            width: 100%;
+        }
+        #contact input,
+        #contact__form--mess {
+            border-radius: 0;
+        }
+        .about-contact {
+            width: 100%;
+        }
+        .about-carrer {
+            width: 100%;
+        }
+        .timeline__list {
+            text-align: center;
+        }
+        .contact__form--send {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 0;
+        }
+        .skill-item {
+            padding: 15px 0;
+        }
+        .about-contact ul li {
+            margin: 15px 0;
+        }
+        /* menu */
+        .menu {
+            display: none;
+        }
+        .nav__bar--mobile {
+            display: block;
+        }
+        .nav__mobile {
+            display: block;
+        }
+        .info--img {
+            width: 100px;
+            height: 100px;
+            margin: 1rem auto;
+        }
+        .info--img img {
+            width: 100%;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            height: 100%;
+        }
+        .text--info>ul {
+            display: flex;
+            width: 40%;
+        }
+        .nav__mobile--list ul li a:focus>.nav__mobile {
+            display: none;
+        }
+    }
+    
+    @media only screen and (max-width: 46.1875em) {
+        .content__header {
+            display: none;
+        }
+        .nav__mobile {
+            width: 100%;
+        }
+        .skill-list {
+            display: inline-block;
+        }
+        .text--info>ul {
+            display: flex;
+            width: 20%;
+        }
+        .contact__form form>div {
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .contact__form form>div .contact__form--name {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .contact__form form>div .contact__form--email {
+            width: 100%;
+        }
+        .item--left {
+            width: 68%;
+            text-align: right;
+        }
+        .
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
