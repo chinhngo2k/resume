@@ -10,7 +10,7 @@ if (!acc_id) {
 } else {
     //trong truong hop nguoi dung co tinh setCookie
     const formData = new FormData();
-    formData.append('id', id);
+    formData.append('id', acc_id);
     fetch(`http://localhost/resume/server/api/account/checkLogin.php`, {
             method: "post",
             body: formData
