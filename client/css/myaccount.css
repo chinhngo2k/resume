@@ -94,7 +94,7 @@ a {
     padding: 10px 5px;
     display: block;
     width: 10%;
-    margin: 0 auto;
+    margin: 20px auto;
     text-align: center;
     margin-top: 20px;
     background-color: #1565c0;
@@ -126,4 +126,52 @@ a {
 
 .nav__bar--logout a {
     color: #1565c0;
+}
+
+
+/* reponsive */
+
+
+/* mobile & tablet (<1024px) */
+
+@media only screen and (max-width: 63.9375em) {
+    .user,
+    .create-cv {
+        border-radius: 0;
+    }
+    .list-cv {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .list-cv {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* Tablet: width >= 740px and width < 1024px */
+
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+    .user {
+        width: 40%;
+        margin: 20px;
+    }
+    .create-cv {
+        width: 30%;
+        padding: 20px 15px;
+    }
+}
+
+
+/* Reponsive Mobile: width < 740px */
+
+@media only screen and (max-width: 46.1875em) {
+    .user {
+        width: 100%;
+        margin: 20px;
+    }
+    .create-cv {
+        width: 90%;
+    }
 }

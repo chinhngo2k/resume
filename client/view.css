@@ -302,25 +302,30 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 0.5rem 2rem; */
     }
-    .wrap-skill-item{
+    
+    .wrap-skill-item {
         margin: 0.5rem 0;
     }
+    
     .skill-item {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-    .item-info{
+    
+    .item-info {
         padding-left: 1rem;
         padding-top: 0.25rem;
     }
-    .item-info span{ 
+    
+    .item-info span {
         font-size: 12px;
         color: #102027;
         font-weight: bold;
         font-style: italic;
     }
-    .item-info p{
+    
+    .item-info p {
         color: #263238;
     }
     
@@ -625,7 +630,6 @@
             width: 68%;
             text-align: right;
         }
-        .
     }
     
     @keyframes fadeIn {
